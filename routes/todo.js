@@ -20,4 +20,17 @@ router.post('/add/todo', (req, res) => {
         .catch((err) => console.log(err));
 });
 
+router.post('/delete/todo/:id', async (req, res) => {
+    try {
+        const todoId = req.params.id;
+        await ToDo.findByIdAndDelete(todoId); // Delete the to-do by its ID
+        console.log('Successfully deleted');
+        res.redirect('/');
+    } catch (err) {
+        console.error('Error deleting to-do:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 module.exports = router;

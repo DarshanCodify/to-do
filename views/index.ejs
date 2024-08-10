@@ -14,11 +14,19 @@
         <input type="submit" value="Add todo" class="btn btn-md btn-primary mx-2">
     </form>
     
+
 <ul class="list-group my-5">
-    <% todos.forEach(todo => { %> <!-- Use 'todos' as passed from the server -->
-        <li class="list-group-item"><%= todo.title %></li> <!-- Use the correct field name -->
-    <% }) %>
+  <% todos.forEach(todo => { %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= todo.title %>
+          <form action="/delete/todo/<%= todo._id %>" method="POST" style="display: inline;">
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+      </li>
+  <% }) %>
 </ul>
+
   </div>
+  
 
 <%- include("./partials/footer") %>
