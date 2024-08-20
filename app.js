@@ -3,10 +3,12 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/todo_express", {
-  useNewUrlParser: true,
-  UseUnifiedTopology: true,
-});
+// mongoose.connect("mongodb://localhost:27017/todo_express", {
+//   useNewUrlParser: true,
+//   UseUnifiedTopology: true,
+// });
+mongoose.connect('mongodb://localhost:27017/todo_express');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
